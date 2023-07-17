@@ -4,14 +4,18 @@ import axios from "axios";
 import { CartContext } from "../../context/Main";
 import Link from "next/link";
 import { AiOutlineWarning } from "react-icons/ai";
+import { Spin } from "antd";
 
-export default function cart() {
+export default function Cart() {
   const [products, setProducts] = useState([]);
   const { cartProducts, addProducts, removeProduct } = useContext(CartContext);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     if (cartProducts?.length > 0) {
       axios.post("/api/cart", { ids: cartProducts }).then((response) => {
         setProducts(response.data, "response.data");
+        setLoading(false);
       });
     }
   }, [cartProducts]);
@@ -112,6 +116,12 @@ export default function cart() {
                 </tbody>
               </table>
             </>
+          )}
+          {loading && (
+            <Spin
+              className="flex items-center justify-center mx-auto"
+              size="large"
+            />
           )}
         </div>
         {!!cartProducts?.length && (
