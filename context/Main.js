@@ -5,6 +5,13 @@ export const CartContext = createContext({});
 export function CartContextProvider({ children }) {
   const ls = typeof window !== "undefined" ? window.localStorage : null;
   const [cartProducts, setCartProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [country, setCountry] = useState("");
 
   useEffect(() => {
     if (cartProducts.length > 0) {
@@ -30,9 +37,21 @@ export function CartContextProvider({ children }) {
     });
   }
 
+  function clearCarts() {
+    setCartProducts([]);
+  }
+
   return (
     <CartContext.Provider
-      value={{ cartProducts, setCartProducts, addProducts, removeProduct }}
+      value={{
+        cartProducts,
+        setCartProducts,
+        loading,
+        setLoading,
+        addProducts,
+        removeProduct,
+        clearCarts,
+      }}
     >
       {children}
     </CartContext.Provider>

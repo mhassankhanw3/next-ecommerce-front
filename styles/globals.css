@@ -23,6 +23,13 @@ td {
   mix-blend-mode: multiply;
 }
 
+.input {
+  @apply max-w-[100%] w-[100%] border border-gray-300 rounded-[6px] py-1 px-2;
+}
+.input:focus {
+  @apply max-w-[100%] w-[100%] border border-blue-600 rounded-[6px] py-1 px-2 outline-none;
+}
+
 .white_box {
   /* Initial styles */
 }
@@ -35,10 +42,10 @@ td {
 }
 
 .default-btn:hover {
-  @apply bg-green-900 text-gray-50 ;
+  @apply bg-green-900 text-gray-50;
 }
 .default-btn:nth-child(1):hover {
-  @apply bg-red-900 text-gray-50 ;
+  @apply bg-red-900 text-gray-50;
 }
 
 @keyframes boxAnimation {
@@ -56,4 +63,71 @@ td {
 button:hover .solid {
   color: white;
   transition: 0.01s;
+}
+
+/* .button-gradient {
+  background: linear-gradient(45deg, #9410fd, #3d6bef);
+  transition: background-color 0.3s ease;
+}
+
+.button-gradient:hover {
+  background-color: #3d6bef;
+} */
+
+.button-gradient {
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 45px;
+  width: 85px;
+  border: 0px solid; */
+  background-image: linear-gradient(45deg, #9410fd, #3d6bef, #3d6bef);
+  background-size: 500% 400%;
+  color: white;
+  transition: 0.6s all;
+}
+
+.button-gradient:hover {
+  background-position: 0% 70%;
+  transform: perspective(10px);
+}
+
+.button-gradient:active {
+  transform: scale(0.95);
+  transition: 0.1s;
+}
+
+.custom-disabled-button {
+  background-color: #475569; /* Light gray background */
+  color: #f3f4f6; /* Darker gray text */
+  cursor: not-allowed; /* Show the "not-allowed" cursor */
+  opacity: 0.7; /* Reduce opacity to indicate the button is disabled */
+  pointer-events: none; /* Disable pointer events */
+}
+
+/* Button with loading indicator style */
+.custom-loading-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Loader styles (same as previous CSS) */
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #fff;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

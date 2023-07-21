@@ -19,7 +19,7 @@ export default function Hero({ product }) {
   }, [cartProducts]);
   return (
     <div className="bg-[#222] m-0 p-[1px] ">
-      <div className="flex items-center justify-center gap-[100px] my-[80px] max-w-[100%] w-[60%] mx-auto">
+      <div className="flex items-center justify-center gap-[100px] my-[80px] mt-[150px] max-w-[100%] w-[60%] mx-auto">
         <div className="max-w-[100%] w-[45%]">
           <h1 className="text-[48px] text-gray-200 font-medium">
             {product.title}
